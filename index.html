@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Prototype</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+
+      socket.on('action_a', function () {
+console.log('action_a');
+      });
+
+      socket.on('action_b', function () {
+console.log('action_b');
+      });
+
+      socket.on('action_c', function () {
+console.log('action_c');
+      });
+
+      socket.on('connection_ready', function () {
+console.log('connection_ready');
+        socket.emit('connect_observer');
+      });
+    </script>
+  </body>
+</html>
