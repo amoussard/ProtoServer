@@ -1,7 +1,10 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io').listen(8080);
 var observers = [];
+
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
   res.sendfile('index.html');
