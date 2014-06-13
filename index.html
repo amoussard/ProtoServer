@@ -11,16 +11,20 @@
     <script type="text/javascript">
       var socket = io.connect('http://proto.ellipsisteam.com:8080');
 
-      socket.on('action_a', function () {
-console.log('action_a');
+      socket.on('action_up', function () {
+console.log('action_up');
       });
 
-      socket.on('action_b', function () {
-console.log('action_b');
+      socket.on('action_down', function () {
+console.log('action_down');
       });
 
-      socket.on('action_c', function () {
-console.log('action_c');
+      socket.on('action_left', function () {
+console.log('action_left');
+      });
+
+      socket.on('action_right', function () {
+console.log('action_right');
       });
 
       socket.on('connection_ready', function () {

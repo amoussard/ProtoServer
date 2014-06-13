@@ -27,19 +27,24 @@ console.log('connect_observer');
   socket.on('connect_interface', function(){
 console.log('connect_interface');
 
-    socket.on('action_a', function(){
-console.log('action A');
-      emitToObservers('action_a');
+    socket.on('action_up', function(){
+console.log('action UP');
+      emitToObservers('action_up');
     });
 
-    socket.on('action_b', function(){
-console.log('action B');
-      emitToObservers('action_b');
+    socket.on('action_down', function(){
+console.log('action Down');
+      emitToObservers('action_down');
     });
 
-    socket.on('action_c', function(){
-console.log('action C');
-      emitToObservers('action_c');
+    socket.on('action_left', function(){
+console.log('action Left');
+      emitToObservers('action_left');
+    });
+
+    socket.on('action_right', function(){
+console.log('action Right');
+      emitToObservers('action_right');
     });
   });
 
