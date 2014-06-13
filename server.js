@@ -1,6 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io').listen(8080);
 var observers = [];
 
 app.get('/', function(req, res){
@@ -42,7 +42,7 @@ console.log('action C');
       emitToObservers('action_c');
     });
   });
-  
+
   socket.emit('connection_ready');
 });
 

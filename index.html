@@ -8,8 +8,8 @@
   <body>
     <ul id="messages"></ul>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
+    <script type="text/javascript">
+      var socket = io.connect('http://localhost:8080');
 
       socket.on('action_a', function () {
 console.log('action_a');
