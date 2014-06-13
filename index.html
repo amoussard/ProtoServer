@@ -3,33 +3,64 @@
   <head>
     <title>Prototype</title>
     <style>
+      * {
+        margin:0;
+        padding:0;
+      }
+      canvas {
+
+      }
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <canvas id="myCanvas" />
     <script src="http://proto.ellipsisteam.com:8080/socket.io/socket.io.js"></script>
     <script type="text/javascript">
       var socket = io.connect('http://proto.ellipsisteam.com:8080');
 
+      var x = 0;
+      var y = 0;
+      var img = new Image();   // Crée un nouvel objet Image
+      img.src = 'soup6.png'; // Définit le chemin vers sa source
+      var canvas = document.getElementById("myCanvas");
+      canvas.width = window.screen.availWidth;
+      canvas.height = window.screen.availHeight;
+      var ctx = canvas.getContext("2d");
+
+      var clearCanvas = function () {
+        ctx.clearRect (0, 0, canvas.width, canvas.height);
+      }
+      var draw = function (x, y, _ctx){
+        _ctx.drawImage(img, x, y, 100, 100);
+      };
+      var updateCanvas = function () {
+        clearCanvas();
+        draw(x, y, ctx);
+      }
+
       socket.on('action_up', function () {
-console.log('action_up');
+        y -= 10;
+        updateCanvas();
       });
 
       socket.on('action_down', function () {
-console.log('action_down');
+        y += 10;
+        updateCanvas();
       });
 
       socket.on('action_left', function () {
-console.log('action_left');
+        x -= 10;
+        updateCanvas();
       });
 
       socket.on('action_right', function () {
-console.log('action_right');
+        x += 10;
+        updateCanvas();
       });
 
       socket.on('connection_ready', function () {
-console.log('connection_ready');
         socket.emit('connect_observer');
+        updateCanvas();
       });
     </script>
   </body>
